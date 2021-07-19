@@ -1,13 +1,16 @@
 const functions = require("firebase-functions");
 const admin = require('firebase-admin');
+
 admin.initializeApp();
 
 require("dotenv").config();
 const express = require('express');
 const app = express();
-const mailchimp = require('./views/js/mailchimp');
+const mailchimp = require('./js/mailchimp');
 
-app.use(express.static('views'))
+var path = require ('path');
+app.use(express.static(path.join(__dirname)));
+
 app.set('view engine', 'ejs');
 app.use(express.urlencoded());
 app.use(express.json());
